@@ -153,8 +153,12 @@ func (s *Service) nocache() gin.HandlerFunc {
 		c.Header("Cache-Control", "private, no-cache, no-store, must-revalidate")
 		c.Header("Expires", "-1")
 		c.Header("Pragma", "no-cache")
+		c.Header("Access-Control-Allow-Origin", "*")
+        c.Header("Access-Control-Allow-Methods", "POST, GET, OPTIONS, PUT, DELETE")
+        c.Header("Access-Control-Allow-Headers", "Accept, Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization")
 		if s.allowOrigin != "" {
 			c.Header("Access-Control-Allow-Origin", s.allowOrigin)
 		}
+		 
 	}
 }
